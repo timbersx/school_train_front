@@ -1,0 +1,13 @@
+# docker-compose 文件
+version: '3' # compose-file的语法版本
+services: # 定义服务
+  admin_system: # 服务名
+    build:
+      context: . # 指定dockerfile所在文件夹的路径
+      dockerfile: ./Dockerfile # dockerfile文件的相对路径
+    image: funa_exam_admin
+    ports:
+      - 8085:80 # 端口映射
+    volumes:
+      - ./dist/:/usr/share/nginx/html/
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
